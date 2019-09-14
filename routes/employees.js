@@ -332,17 +332,10 @@ res.json({"booking" : response });
 });
 
 // GET An Employee
-router.get('/:id', (req, res) => {
-  const  id  = req.query.id; 
-  const  main  = req.query.main; 
-  mysqlConnection.query('SELECT * FROM branchs WHERE id = ? and main = ?', [id,main], (err, rows, fields) => {
-    if (!err) {
-      res.json(rows[0]);
-    } else {
-      console.log(err);
-    }
-  });
+router.get('/hh', (req, res) => {
+  res.json({"d":5});
 });
+
 
 // DELETE An Employee
 router.delete('/:id', (req, res) => {
