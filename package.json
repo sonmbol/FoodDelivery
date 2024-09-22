@@ -18,7 +18,7 @@
 		"@types/express": "^4.17.21",
 		"@types/mysql": "^2.15.26",
 		"dotenv": "^16.4.5",
-		"express": "^4.19.2",
+		"express": "^4.21.0",
 		"mysql": "^2.18.1"
 	}
 }
