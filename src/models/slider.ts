@@ -1,3 +1,4 @@
+import Language from "../middlewares/Language"
 export default class Slider {
     id: number
     details: string
@@ -10,7 +11,7 @@ export default class Slider {
         image?: string
     ) {
         this.id = id
-        this.details = Language.isArabic ? detailsAr : details
+        this.details = Language.isArabic() ? detailsAr : details
         this.image = image
     }
 }

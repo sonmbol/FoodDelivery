@@ -1,3 +1,5 @@
+import Language from "../../middlewares/Language"
+
 export class AddonGroup {
     id: number
     productId: number
@@ -26,7 +28,7 @@ export class Addon {
     ) {
         this.id = id
         this.groupId = groupId
-        this.name = Language.isArabic ? nameAr : name
+        this.name = Language.isArabic() ? nameAr : name
         this.price = price
     }
 }

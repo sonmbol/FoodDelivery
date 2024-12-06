@@ -5,12 +5,13 @@ import Address from '../../models/user/address';
 
 // for Login and Update user
 exports.userUpdate = async (req: Request, res: Response, next: NextFunction) => {
-    const userId = req.body.userId
-    const token: string = req.body.token ?? ""
     const name = req.body.name
     const phone = req.body.phone
     const email = req.body.email
-
+    const token = req.headers['authorization']
+    
+    const userId = ""
+    // const userId = await getUserId(token)
     if (!userId && !name && !phone && !email) {
         const error = new Error("required filed is missing") as CustomError
         error.status = 400
@@ -38,9 +39,11 @@ exports.userUpdate = async (req: Request, res: Response, next: NextFunction) => 
 }
 
 exports.recharge = async (req: Request, res: Response, next: NextFunction) => {
-    const userId = req.body.userId
     const amount = req.body.amount
-
+    const token = req.headers['authorization']
+    
+    const userId = ""
+    // const userId = await getUserId(token)
     if (!userId) {
         const error = new Error("required filed is missing") as CustomError
         error.status = 400
@@ -61,8 +64,10 @@ exports.recharge = async (req: Request, res: Response, next: NextFunction) => {
 }
 
 exports.userTransaction = async (req: Request, res: Response, next: NextFunction) => {
-    const userId = req.body.userId
-
+    const token = req.headers['authorization']
+    
+    const userId = ""
+    // const userId = await getUserId(token)
     if (!userId) {
         const error = new Error("required filed is missing") as CustomError
         error.status = 400
@@ -83,8 +88,10 @@ exports.userTransaction = async (req: Request, res: Response, next: NextFunction
 
 
 exports.address = async (req: Request, res: Response, next: NextFunction) => {
-    const userId = req.body.userId
-
+    const token = req.headers['authorization']
+    
+    const userId = ""
+    // const userId = await getUserId(token)
     if (!userId) {
         const error = new Error("required filed is missing") as CustomError
         error.status = 400
@@ -104,7 +111,6 @@ exports.address = async (req: Request, res: Response, next: NextFunction) => {
 }
 
 exports.addAddress = async (req: Request, res: Response, next: NextFunction) => {
-    const userId = req.body.userId
     const name = req.body.name
     const details = req.body.details
     const country = req.body.country
@@ -115,7 +121,10 @@ exports.addAddress = async (req: Request, res: Response, next: NextFunction) => 
     const phone = req.body.phone
     const latitude = req.body.latitude
     const longitude = req.body.longitude
+    const token = req.headers['authorization']
     
+    const userId = ""
+    // const userId = await getUserId(token)
     if (!userId && !name && !details && !country && !city && !phone && !latitude && !longitude) {
         const error = new Error("required filed is missing") as CustomError
         error.status = 400
@@ -150,8 +159,10 @@ exports.addAddress = async (req: Request, res: Response, next: NextFunction) => 
 
 exports.deleteAddress = async (req: Request, res: Response, next: NextFunction) => {
     const id = req.params.id
-    const userId = req.body.userId
-
+    const token = req.headers['authorization']
+    
+    const userId = ""
+    // const userId = await getUserId(token)
     if (!id && !userId) {
         const error = new Error("required filed is missing") as CustomError
         error.status = 400

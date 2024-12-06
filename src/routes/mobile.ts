@@ -22,12 +22,14 @@ router.delete('/address/delete/:id', userController.addAddress)
 router.get('/', dashboardController.dashboard)
 
 // Shop 
-router.post('/shops/:id', shopController.shopsByCategory)
-router.post('/shop/:id', shopController.shop)
-
+router.get('/shops/:id', shopController.shopsByCategory)
+router.get('/shop/:id', shopController.shop)
 
 // Product 
-router.post('/product/:id', productController.product)
+router.get('/product/:id', productController.product)
 
+// Order 
+router.get('/orders/:id', ticketController.orders)
+router.post('/order/book/', ticketController.bookOrder)
 
 module.exports = router

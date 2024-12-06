@@ -6,8 +6,10 @@ import Order from '../../models/ticket/order';
 import Address from '../../models/user/address';
 
 exports.orders = async (req: Request, res: Response, next: NextFunction) => {
-    const userId = req.params.userId
+    const token = req.headers['authorization']
     
+    const userId = ""
+    // const userId = await getUserId(token)    
     if (!userId) {
         const error = new Error("user not found") as CustomError
         error.status = 400

@@ -1,3 +1,4 @@
+import Language from "../../middlewares/Language"
 import Slider from "../slider"
 import { Addon, AddonGroup } from "./addon"
 
@@ -26,7 +27,7 @@ export default class Product {
         this.id = id
         this.categoryId = categoryId
         this.qty = qty
-        this.name = Language.isArabic ? nameAr : name
+        this.name = Language.isArabic() ? nameAr : name
         this.image = image
         this.price = price
         this.discount = discount

@@ -6,10 +6,13 @@ import Product from '../../models/product/product';
 
 exports.shopsByCategory = async (req: Request, res: Response, next: NextFunction) => {
     const categoryId = req.params.categoryId
-    const userId = req.body.userId
     const latitude = req.body.latitude
     const longitude = req.body.longitude
+
+    const token = req.headers['authorization']
     
+    const userId = ""
+    // const userId = await getUserId(token)
     if (!userId && !categoryId) {
         const error = new Error("user not found") as CustomError
         error.status = 400

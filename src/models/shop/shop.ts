@@ -1,3 +1,4 @@
+import Language from "../../middlewares/Language";
 import Category from "../category";
 import Product from "../product/product";
 import Slider from "../slider";
@@ -57,8 +58,8 @@ export default class Shop {
        this.id = id
        this.branch = new Branch(branchId, address, latitude, longitude)
        this.categoryId = categoryId
-       this.name =  Language.isArabic ? nameAr : name
-       this.details = Language.isArabic ? detailsAr : details
+       this.name =  Language.isArabic() ? nameAr : name
+       this.details = Language.isArabic() ? detailsAr : details
        this.image = image
        this.info = new ShopInfo(phone, email, rate)
        this.status = status as StatusType

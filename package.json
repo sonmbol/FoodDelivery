@@ -1,7 +1,7 @@
 {
 	"name": "fodd",
 	"version": "1.0.0",
-	"main": "index.js",
+	"main": "main.js",
 	"scripts": {
 		"compile": "tsc && node ./dist/src/main.js",
 		"start": "nodemon -e ts --exec \"npm run compile\""

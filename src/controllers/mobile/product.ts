@@ -7,8 +7,10 @@ import { Addon, AddonGroup } from '../../models/product/addon';
 
 exports.product = async (req: Request, res: Response, next: NextFunction) => {
     const productId = req.params.productId
-    const userId = req.body.userId
+    const token = req.headers['authorization']
     
+    const userId = ""
+    // const userId = await getUserId(token)
     if (!userId && !productId) {
         const error = new Error("product not found") as CustomError
         error.status = 400

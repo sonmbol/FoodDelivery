@@ -2,20 +2,18 @@ import * as dotenv from "dotenv"
 dotenv.config()
 import express from "express";
 import { mysqlConnection, modifyQuery} from "./config/db";
-const mobileRouter = require("./routes/mobile")
+import { contextMiddleware } from "./middlewares/context";
 
+const mobileRouter = require("./routes/mobile")
 const app = express()
 
 declare global { // to be acrosss the app
     interface CustomError extends Error {
         status: number
     }
-    class Language {
-        static isArabic: boolean
-    }
 }
 
-
+app.use(contextMiddleware)
 app.use((err: CustomError, req: express.Request, res: express.Response, next: express.NextFunction) => {
     if (err) {
        res.status(err.status).send({ message: err.message }) 
@@ -31,14 +29,8 @@ const connect = async () => {
         extended: true
     }))
     app.use(express.json())
-    app.use('/api/mobile/usr', mobileRouter)
+    app.use('/api/mobile/a', mobileRouter)
 }
 
 connect()
-
-// Middleware 
-app.use("/",(req: express.Request, res: express.Response, next: express.NextFunction) => {
-    // Language.isArabic = req.get('Accept-Language')?.toLowerCase() == "ar"
-    next()
-})
 

@@ -1,3 +1,4 @@
+import Language from "../middlewares/Language"
 export default class Category {
     id: number
     name: string
@@ -10,7 +11,7 @@ export default class Category {
         image?: string
     ) {
         this.id = id
-        this.name = Language.isArabic ? nameAr : name 
+        this.name = Language.isArabic() ? nameAr : name 
         this.image = image
     }
 }
